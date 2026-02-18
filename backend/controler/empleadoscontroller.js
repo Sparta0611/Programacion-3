@@ -2,22 +2,22 @@ const controller = {};
 
 controller.list = (req, res) => {
     req.getConnection((error, conn) => {
-        conn.query('select *from empresa', (err, empresa) => {
+        conn.query('select *from empleados', (err, empleados) => {
             if (err) {
                 res.json(err);
             }
-            res.json(empresa);
+            res.json(empleados);
         });
     });
 };
 
 controller.edit = (req, res) => {
 
-    const { idempresa } = req.params;
+    const { idemp } = req.params;
 
     req.getConnection((err, conn) => {
-        conn.query('select *from empresa where idempresa=?', [idempresa], (err, empresa) => {
-            res.json(empresa[0]);
+        conn.query('select *from empleados where idemp=?', [idemp], (err, empleados) => {
+            res.json(empleados[0]);
 
         });
 
@@ -28,19 +28,19 @@ controller.edit = (req, res) => {
 controller.save = (req, res) => {
     const data = req.body;
     req.getConnection((err, conn) => {
-        conn.query('insert into empresa set?', [data], (err, empresa) => {
-            res.json(empresa);
+        conn.query('insert into empleados set?', [data], (err, empleados) => {
+            res.json(empleados);
         });
     })
 };
 
 controller.update = (req, res) => {
 
-    const { idempresa } = req.params;
-    const nueva_empresa = req.body;
+    const { idemp } = req.params;
+    const nuevo_empleado = req.body;
 
     req.getConnection((err, conn) => {
-        conn.query('update empresa set ? where idempresa =?', [nueva_empresa, idempresa], (err, rows) => {
+        conn.query('update empleados set ? where idemp =?', [nuevo_empleado, idemp], (err, rows) => {
             res.json({ message: "Registro Actualizado" });
 
         });
@@ -48,9 +48,9 @@ controller.update = (req, res) => {
 };
 
 controller.delete = (req, res) => {
-    const { idempresa } = req.params;
+    const { idemp } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from empresa where idempresa =?', [idempresa], (err, rows) => {
+        conn.query('delete from empleados where idemp =?', [idemp], (err, rows) => {
             res.json({ message: "Registro Eliminado" });
         });
     })

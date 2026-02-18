@@ -2,22 +2,22 @@ const controller = {};
 
 controller.list = (req, res) => {
     req.getConnection((error, conn) => {
-        conn.query('select *from empresa', (err, empresa) => {
+        conn.query('select *from proveedor', (err, proveedor) => {
             if (err) {
                 res.json(err);
             }
-            res.json(empresa);
+            res.json(proveedor);
         });
     });
 };
 
 controller.edit = (req, res) => {
 
-    const { idempresa } = req.params;
+    const { idprov } = req.params;
 
     req.getConnection((err, conn) => {
-        conn.query('select *from empresa where idempresa=?', [idempresa], (err, empresa) => {
-            res.json(empresa[0]);
+        conn.query('select *from proveedor where idprov=?', [idprov], (err, proveedor) => {
+            res.json(proveedor[0]);
 
         });
 
@@ -28,19 +28,19 @@ controller.edit = (req, res) => {
 controller.save = (req, res) => {
     const data = req.body;
     req.getConnection((err, conn) => {
-        conn.query('insert into empresa set?', [data], (err, empresa) => {
-            res.json(empresa);
+        conn.query('insert into proveedor set?', [data], (err, proveedor) => {
+            res.json(proveedor);
         });
     })
 };
 
 controller.update = (req, res) => {
 
-    const { idempresa } = req.params;
-    const nueva_empresa = req.body;
+    const { idprov } = req.params;
+    const nuevo_proveedor = req.body;
 
     req.getConnection((err, conn) => {
-        conn.query('update empresa set ? where idempresa =?', [nueva_empresa, idempresa], (err, rows) => {
+        conn.query('update proveedor set ? where idprov =?', [nuevo_proveedor, idprov], (err, rows) => {
             res.json({ message: "Registro Actualizado" });
 
         });
@@ -48,9 +48,9 @@ controller.update = (req, res) => {
 };
 
 controller.delete = (req, res) => {
-    const { idempresa } = req.params;
+    const { idprov } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from empresa where idempresa =?', [idempresa], (err, rows) => {
+        conn.query('delete from proveedor where idprov =?', [idprov], (err, rows) => {
             res.json({ message: "Registro Eliminado" });
         });
     })

@@ -2,22 +2,22 @@ const controller = {};
 
 controller.list = (req, res) => {
     req.getConnection((error, conn) => {
-        conn.query('select *from empresa', (err, empresa) => {
+        conn.query('select *from clientes', (err, clientes) => {
             if (err) {
                 res.json(err);
             }
-            res.json(empresa);
+            res.json(clientes);
         });
     });
 };
 
 controller.edit = (req, res) => {
 
-    const { idempresa } = req.params;
+    const { num_clie } = req.params;
 
     req.getConnection((err, conn) => {
-        conn.query('select *from empresa where idempresa=?', [idempresa], (err, empresa) => {
-            res.json(empresa[0]);
+        conn.query('select *from clientes where num_clie=?', [num_clie], (err, clientes) => {
+            res.json(clientes[0]);
 
         });
 
@@ -28,19 +28,19 @@ controller.edit = (req, res) => {
 controller.save = (req, res) => {
     const data = req.body;
     req.getConnection((err, conn) => {
-        conn.query('insert into empresa set?', [data], (err, empresa) => {
-            res.json(empresa);
+        conn.query('insert into clientes set?', [data], (err, clientes) => {
+            res.json(clientes);
         });
     })
 };
 
 controller.update = (req, res) => {
 
-    const { idempresa } = req.params;
-    const nueva_empresa = req.body;
+    const { num_clie } = req.params;
+    const nuevo_cliente = req.body;
 
     req.getConnection((err, conn) => {
-        conn.query('update empresa set ? where idempresa =?', [nueva_empresa, idempresa], (err, rows) => {
+        conn.query('update clientes set ? where num_clie =?', [nuevo_cliente, num_clie], (err, rows) => {
             res.json({ message: "Registro Actualizado" });
 
         });
@@ -48,9 +48,9 @@ controller.update = (req, res) => {
 };
 
 controller.delete = (req, res) => {
-    const { idempresa } = req.params;
+    const { num_clie } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from empresa where idempresa =?', [idempresa], (err, rows) => {
+        conn.query('delete from clientes where num_clie =?', [num_clie], (err, rows) => {
             res.json({ message: "Registro Eliminado" });
         });
     })
