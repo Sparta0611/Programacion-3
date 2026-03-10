@@ -1,1 +1,52 @@
-<p>detalleventa works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
+
+</nav>
+
+<div class="container">
+    <div class="row mt-25">
+        <table class="table table-borbered table-hover">
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>Empresa</th>
+                    <th>Sucursal</th>
+                    <th>Cliente</th>
+                    <th>ID de venta</th>
+                    <th>ID producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>ISV</th>
+                    <th>Descuento</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                    <th>Eliminar</th>
+                    <th>Actualizar</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let User of TUser">
+                    <td>{{User.iddetventa}}</td>
+                    <td>{{User.idempresa}}</td>
+                    <td>{{User.idsuc}}</td>
+                    <td>{{ User.num_clie }}</td>
+                    <td>{{User.num_venta}}</td>
+                    <td>{{User.num_prod}}</td>
+                    <td>{{ User.cantidad}}</td>
+                    <td>{{User.precio}}</td>
+                    <td>{{User.isv}}</td>
+                    <td>{{User.descuento}}</td>
+                    <td>{{ User.total}}</td>
+                    <td>{{User.estado}}</td>
+                    <td> <button class="btn btn-danger">Eliminar</button> </td>
+                    <td>
+                        <button class="btn btn-success">Actualizar</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

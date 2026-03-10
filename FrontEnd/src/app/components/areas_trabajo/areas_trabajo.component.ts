@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {  proveedor } from 'src/app/interface/user';
+import {  areas_trabajo } from 'src/app/interface/user';
 import { DataService } from '../../service/data.service';
+
 @Component({
-  selector: 'app-proveedor',
-  templateUrl: './proveedor.component.html',
-  styleUrls: ['./proveedor.component.css']
+  selector: 'app-areas_trabajo',
+  templateUrl: './areas_trabajo.component.html',
+  styleUrls: ['./areas_trabajo.component.css']
 })
-export class ProveedorComponent implements OnInit {
+
+export class AreasTrabajoComponent implements OnInit {
   TUser: any = [];
-  user: proveedor = {
-    idprov:  null ,
+  user: areas_trabajo = {
+    idarea:  null ,
     idempresa: null,
-    proveedor: null,
-    direccion: null,
-    telefono: null,
-    responsable: null,
+    idsuc: null,
+    area: null,
     fecha_creacion: null,
-    observaciones: null,
     estado: 'Activo'
   }
 
@@ -26,10 +25,12 @@ export class ProveedorComponent implements OnInit {
     this.getUser();
   }
   getUser() {
-    this.Data.getAll('/Proveedor')
+    this.Data.getAll('/areas_trabajo')
       .subscribe(res => {
           this.TUser = res;
         
         }, err => console.error(err));
   }
-}
+  
+} 
+

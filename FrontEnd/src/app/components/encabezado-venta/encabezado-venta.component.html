@@ -1,1 +1,44 @@
-<p>encabezado-venta works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
+
+</nav>
+
+<div class="container">
+    <div class="row mt-25">
+        <table class="table table-borbered table-hover">
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>Empresa</th>
+                    <th>Sucursal</th>
+                    <th>Cliente</th>
+                    <th>Usuario</th>
+                    <th>ID de pago</th>
+                    <th>Fecha de venta</th>
+                    <th>Estado</th>
+                    <th>Eliminar</th>
+                    <th>Actualizar</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let User of TUser">
+                    <td>{{User.num_venta}}</td>
+                    <td>{{User.idempresa}}</td>
+                    <td>{{User.idsuc}}</td>
+                    <td>{{ User.num_clie }}</td>
+                    <td>{{User.userid}}</td>
+                    <td>{{User.idfpago}}</td>
+                    <td>{{ User.fecha_venta| date:'dd/MM/yyyy' }}</td>
+                    <td>{{User.estado}}</td>
+                    <td> <button class="btn btn-danger">Eliminar</button> </td>
+                    <td>
+                        <button class="btn btn-success">Actualizar</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

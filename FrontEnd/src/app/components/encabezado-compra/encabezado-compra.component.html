@@ -1,1 +1,35 @@
-<p>encabezado-compra works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
+
+</nav>
+
+<div class="container">
+    <div class="row mt-25">
+        <table class="table table-borbered table-hover">
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>fecha_compra</th>
+                    <th>estado</th>
+                    <th>Eliminar</th>
+                    <th>Actualizar</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let User of TUser">
+                    <td>{{User.num_compra}}</td>
+                    <td>{{User.fecha_compra| date:'dd/MM/yyyy'}}</td>
+                    <td>{{ User.estado }}</td>
+                    
+                    <td> <button class="btn btn-danger">Eliminar</button> </td>
+                    <td>
+                        <button class="btn btn-success">Actualizar</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

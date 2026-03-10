@@ -43,7 +43,7 @@ const detalleventaRoutes = require('./rutas/detalleventa');
 const cxcobrarRoutes = require('./rutas/cxcobrar');
 const cxpagarRoutes = require('./rutas/cxpagar');
 const pagosRoutes = require('./rutas/pagos');
-
+const clientesRoutes = require('./rutas/clientes');
 app.set('port', process.env.PORT || 3000);
 
 app.use(morgan('dev'));
@@ -60,6 +60,25 @@ var bodyParser = require('body-parser');
 // create application/json parser
 app.use(bodyParser.json());
 
+// rutas frontend
+app.use('/api/clientes',clientesRoutes)
+app.use('/api/empresa', emprsaRoutes);
+app.use('/api/sucursales', sucursalesRoutes);
+app.use('/api/proveedor', proveedorRoutes);
+app.use('/api/areas_trabajo', areas_trabajoRoutes);
+app.use('/api/empleados', empleadosRoutes);
+app.use('/api/tipousuario', tipousuarioRoutes);
+app.use('/api/usuario', usuarioRoutes);
+app.use('/api/tipoproducto', tipoproductoRoutes);
+app.use('/api/producto', productoRoutes);
+app.use('/api/formapago', formapagoRoutes);
+app.use('/api/encabezadoCompra', encabezado_compraRoutes);
+app.use('/api/detalleCompra', detalle_compraRoutes);
+app.use('/api/encabezadoVenta', encabezado_ventaRoutes);
+app.use('/api/detalleVenta', detalleventaRoutes);
+app.use('/api/cxcobrar', cxcobrarRoutes);
+app.use('/api/cxpagar', cxpagarRoutes);
+app.use('/api/pagos', pagosRoutes);
 
 //inicializando el server
 app.listen(app.get('port'), () => {

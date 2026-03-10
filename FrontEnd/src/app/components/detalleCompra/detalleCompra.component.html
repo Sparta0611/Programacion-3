@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark">
-    <a href="/" class="navbar-brand ">REGISTRO DE EMPRESAS</a>
+    <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
 
 </nav>
 
@@ -9,9 +9,12 @@
             <thead>
                 <tr>
                     <th>NO</th>
-                    <th>usuario</th>
-                    <th>clave</th>
-                    <th>tipo</th>
+                    <th>Codigo de compra</th>
+                    <th>cantidad</th>
+                    <th>precio</th>
+                    <th>subtotal</th>
+                    <th>isv</th>
+                    <th>total</th>
                     <th>estado</th>
                     <th>Eliminar</th>
                     <th>Actualizar</th>
@@ -21,12 +24,14 @@
             <tbody>
 
                 <tr *ngFor="let User of TUser">
-                    <td>{{User.userid}}</td>
-                    <td>{{User.usuario}}</td>
-                    <td>{{ User.clave }}</td>
-                    <td>{{User.tipo}}</td>
-                    <td>{{ User.estado }}</td>
-
+                    <td>{{User.iddetcomp}}</td>
+                    <td>{{User.num_compra}}</td>
+                    <td>{{User.cantidad}}</td>
+                    <td>{{ User.precio }}</td>
+                    <td>{{User.subtotal}}</td>
+                    <td>{{User.isv}}</td>
+                    <td>{{ User.total }}</td>
+                    <td>{{User.estado}}</td>
                     <td> <button class="btn btn-danger">Eliminar</button> </td>
                     <td>
                         <button class="btn btn-success">Actualizar</button>

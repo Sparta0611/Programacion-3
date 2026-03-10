@@ -8,7 +8,7 @@ import { SucursalesComponent } from './components/sucursales/sucursales.componen
 import { ProveedorComponent } from './components/proveedor/proveedor.component';
 import { DataService } from './service/data.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AreasTrabajoComponent } from './components/areas-trabajo/areas-trabajo.component';
+import { AreasTrabajoComponent } from './components/areas_trabajo/areas_trabajo.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
@@ -17,7 +17,7 @@ import { TipoproductoComponent } from './components/tipoproducto/tipoproducto.co
 import { ProductoComponent } from './components/producto/producto.component';
 import { FormapagoComponent } from './components/formapago/formapago.component';
 import { EncabezadoCompraComponent } from './components/encabezado-compra/encabezado-compra.component';
-import { DetalleCompraComponent } from './components/detalle-compra/detalle-compra.component';
+import { DetalleCompraComponent } from './components/detalleCompra/detalleCompra.component';
 import { EncabezadoVentaComponent } from './components/encabezado-venta/encabezado-venta.component';
 import { DetalleventaComponent } from './components/detalleventa/detalleventa.component';
 import { CxcobrarComponent } from './components/cxcobrar/cxcobrar.component';

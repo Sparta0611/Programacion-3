@@ -1,1 +1,54 @@
-<p>empleados works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand ">REGISTRO DE EMPRESAS</a>
+
+</nav>
+
+<div class="container">
+    <div class="row mt-25">
+        <table class="table table-borbered table-hover">
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>identidad</th>
+                    <th>fecha_nac</th>
+                    <th>nombres</th>
+                    <th>apellidos</th>
+                    <th>femenino</th>
+                    <th>masculino</th>
+                    <th>soltero</th>
+                    <th>casado</th>
+                    <th>unionlibre</th>
+                    <th>direccion</th>
+                    <th>fecha_creacion</th>
+                    <th>estado</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let User of TUser">
+                    <td>{{User.idemp}}</td>
+                    <td>{{User.identidad}}</td>
+                    <td>{{ User.fecha_nac | date:'dd/MM/yyyy' }}</td>
+                    <td>{{User.nombres}}</td>
+                    <td>{{User.apellidos}}</td>
+                    <td>{{ User.femenino?.data?.[0] ? 'Sí' : 'No' }}</td>
+                    <td>{{ User.masculino?.data?.[0] ? 'Sí' : 'No' }}</td>
+                    <td>{{ User.soltero?.data?.[0] ? 'Sí' : 'No' }}</td>
+                    <td>{{ User.casado?.data?.[0] ? 'Sí' : 'No' }}</td>
+                    <td>{{ User.unionlibre?.data?.[0] ? 'Sí' : 'No' }}</td>
+                    <td>{{User.direccion}}</td>
+                    <td>{{User.fecha_creacion | date:'dd/MM/yyyy'}}</td>
+                    <td>{{User.estado}}</td>
+
+                    <td> <button class="btn btn-danger">Eliminar</button> </td>
+                    <td>
+                        <button class="btn btn-success">Actualizar</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

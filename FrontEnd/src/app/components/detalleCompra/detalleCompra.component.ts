@@ -1,24 +1,23 @@
 import { Component,OnInit } from '@angular/core';
-import { detalleVenta } from 'src/app/interface/user';
+import { detalleCompra } from 'src/app/interface/user';
 import { DataService } from '../../service/data.service';
 @Component({
-  selector: 'app-detalleventa',
-  templateUrl: './detalleVenta.component.html',
-  styleUrls: ['./detalleVenta.component.css']
+  selector: 'app-detalleCompra',
+  templateUrl: './detalleCompra.component.html',
+  styleUrls: ['./detalleCompra.component.css']
 })
-export class DetalleventaComponent implements OnInit {
+export class DetalleCompraComponent implements OnInit {
   TUser: any = [];
-  user:detalleVenta = {
-    iddetventa:  null ,
+  user: detalleCompra = {
+    iddetcomp:  null ,
     idempresa: null,
     idsuc: null,
-    num_clie: null ,
-    num_venta:  null ,
-    num_prod: null,
+    num_compra: null ,
+    num_prod:  null ,
     cantidad: null,
-    precio:  null,
-    isv:  null ,
-    descuento: null,
+    precio: null,
+    subtotal: null,
+    isv: null,
     total: null,
     estado: 'Activo'
   }
@@ -29,11 +28,12 @@ export class DetalleventaComponent implements OnInit {
     this.getUser();
   }
   getUser() {
-    this.Data.getAll('/detalleVenta')
+    this.Data.getAll('/detalleCompra')
       .subscribe(res => {
           this.TUser = res;
         
         }, err => console.error(err));
   }
 }
-  
+
+

@@ -1,1 +1,48 @@
-<p>producto works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
+
+</nav>
+
+<div class="container">
+    <div class="row mt-25">
+        <table class="table table-borbered table-hover">
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>descripcion</th>
+                    <th>presentacion</th>
+                    <th>marca</th>
+                    <th>valor</th>
+                    <th>precioventa</th>
+                    <th>existencia</th>
+                    <th>fecha_ingreso</th>
+                    <th>fecha_actualiza</th>
+                    <th>Estado</th>
+                    <th>Eliminar</th>
+                    <th>Actualizar</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let User of TUser">
+                    <td>{{User.num_prod}}</td>
+                    <td>{{User.descripcion}}</td>
+                    <td>{{ User.presentacion }}</td>
+                    <td>{{User.marca}}</td>
+                    <td>{{User.valor}}</td>
+                    <td>{{ User.precioventa }}</td>
+                    <td>{{User.existencia}}</td>
+                    <td>{{User.fecha_ingreso| date:'dd/MM/yyyy'}}</td>
+                    <td>{{ User.fecha_actualiza| date:'dd/MM/yyyy' }}</td>
+                    <td>{{ User.estado }}</td>
+                    <td> <button class="btn btn-danger">Eliminar</button> </td>
+                    <td>
+                        <button class="btn btn-success">Actualizar</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,1 +1,58 @@
-<p>cxcobrar works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <a routerLink="/" class="navbar-brand">REGISTRO DE CUENTAS POR COBRAR</a>
+</nav>
+
+<div class="container-fluid"> <div class="row mt-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>idctxc</th>
+                        <th>Empresa</th>
+                        <th>Venta #</th>
+                        <th>Sucursal</th>
+                        <th>Cliente #</th>
+                        <th>Usuario</th>
+                        <th>F. Pago</th>
+                        <th>Fecha Venta</th>
+                        <th>Prod #</th>
+                        <th>Cant.</th>
+                        <th>Precio</th>
+                        <th>ISV</th>
+                        <th>Desc.</th>
+                        <th>Total</th>
+                        <th>Fecha Pago</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let User of TUser">
+                        <td>{{ User.idcxc }}</td>
+                        <td>{{ User.idempresa }}</td>
+                        <td>{{ User.num_venta }}</td>
+                        <td>{{ User.idsuc }}</td>
+                        <td>{{ User.num_clie }}</td>
+                        <td>{{ User.userid }}</td>
+                        <td>{{ User.idfpago }}</td>
+                        <td>{{ User.fecha_venta | date:'dd/MM/yyyy' }}</td>
+                        <td>{{ User.num_prod }}</td>
+                        <td>{{ User.cantidad }}</td>
+                        <td>{{ User.precio | number:'1.2-2' }}</td>
+                        <td>{{ User.isv | number:'1.2-2' }}</td>
+                        <td>{{ User.descuento | number:'1.2-2' }}</td>
+                        <td><strong>{{ User.total | number:'1.2-2' }}</strong></td>
+                        <td>{{ User.fecha_pago | date:'dd/MM/yyyy' }}</td>
+                        <td>{{ User.estado }}</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-sm btn-danger">Eliminar</button>
+                                <button class="btn btn-sm btn-success">Editar</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

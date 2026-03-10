@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AreasTrabajoComponent } from './areas-trabajo.component';
+import { AreasTrabajoComponent } from './areas_trabajo.component';
 
 describe('AreasTrabajoComponent', () => {
   let component: AreasTrabajoComponent;

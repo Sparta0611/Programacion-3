@@ -4,7 +4,7 @@ import { EmpresaComponent } from './components/empresa/empresa.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { ProveedorComponent } from './components/proveedor/proveedor.component';
 
-import { AreasTrabajoComponent } from './components/areas-trabajo/areas-trabajo.component';
+import { AreasTrabajoComponent } from './components/areas_trabajo/areas_trabajo.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
@@ -13,7 +13,7 @@ import { TipoproductoComponent } from './components/tipoproducto/tipoproducto.co
 import { ProductoComponent } from './components/producto/producto.component';
 import { FormapagoComponent } from './components/formapago/formapago.component';
 import { EncabezadoCompraComponent } from './components/encabezado-compra/encabezado-compra.component';
-import { DetalleCompraComponent } from './components/detalle-compra/detalle-compra.component';
+import { DetalleCompraComponent } from './components/detalleCompra/detalleCompra.component';
 import { EncabezadoVentaComponent } from './components/encabezado-venta/encabezado-venta.component';
 import { DetalleventaComponent } from './components/detalleventa/detalleventa.component';
 import { CxcobrarComponent } from './components/cxcobrar/cxcobrar.component';
@@ -36,7 +36,7 @@ const routes: Routes = [
   }
   ,
   {
-    path: 'areas-trabajo',
+    path: 'areas_trabajo',
     component :AreasTrabajoComponent
   },
   {
@@ -68,19 +68,19 @@ const routes: Routes = [
     component :FormapagoComponent
   },
   {
-    path: 'encabezado-compra',
+    path: 'encabezadoCompra',
     component :EncabezadoCompraComponent
   },
   {
-    path: 'detalle-compra',
+    path: 'detalleCompra',
     component :DetalleCompraComponent
   },
   {
-    path: 'encabezado-venta',
+    path: 'encabezadoVenta',
     component :EncabezadoVentaComponent
   },
   {
-    path: 'detalleventa',
+    path: 'detalleVenta',
     component :DetalleventaComponent
   },
   {
