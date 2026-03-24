@@ -2,6 +2,50 @@
     <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
 
 </nav>
+<div class="agregar_contenedor"></div>
+<div class="row mt-5">
+    <div class="card">
+        <div class="card-body">
+            <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
+                <div class="form-group">
+                    <label for="" class="control-label">Empresa</label>
+                    <input type="number" [(ngModel)]="user.idempresa" name="idempresa" placeholder="DIGITE EL ID EMPRESA"
+                        class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">Sucursal</label>
+                    <input type="number" [(ngModel)]="user.idsuc" name="idsuc" placeholder="DIGITE EL ID SUCURSAL"
+                        class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">Area</label>
+                    <input type="text" [(ngModel)]="user.area" name="area" placeholder="DIGITE EL AREA"
+                        class="form-control" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">Fecha Creacion</label>
+                    <input type="date" [(ngModel)]="user.fecha_creacion" name="fecha_creacion"
+                        placeholder="Seleccione la Fecha" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">Estado</label>
+                    <input type="text" [(ngModel)]="user.estado" name="estado" placeholder="DIGITE EL ESTADO"
+                        class="form-control" autofocus>
+                </div>
+
+                <button type="submit" class="btn btn-primary" formnovalidate value="Save"
+                    onclick="javascript:alert('Registro Almacenado')">
+                    Agregar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
 
 <div class="container">
     <div class="row mt-25">
@@ -22,11 +66,12 @@
                     <td>{{User.area}}</td>
                     <td>{{User.fecha_creacion | date:'dd/MM/yyyy'}}</td>
                     <td>{{User.estado}}</td>
-                    <td> <button class="btn btn-danger">Eliminar</button> </td>
+                    <td> <button class="btn btn-danger" (click)="EliminarData(User.idarea)"onclick="javascript:alert('Registro Eliminado')">Eliminar</button> </td>
                     <td>
-                        <button class="btn btn-success">Actualizar</button>
+                        <button class="btn btn-success" [routerLink]="['/areas_trabajo/edit', User.idarea]">
+                            Actualizar
+                        </button>
                     </td>
-                </tr>
 
             </tbody>
         </table>

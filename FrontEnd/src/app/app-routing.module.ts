@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { SucursalesComponent } from './components/sucursales/sucursales.component';
 import { ProveedorComponent } from './components/proveedor/proveedor.component';
-
+import { NavegacionComponent} from './components/navegacion/navegacion.component';
 import { AreasTrabajoComponent } from './components/areas_trabajo/areas_trabajo.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
@@ -19,8 +19,21 @@ import { DetalleventaComponent } from './components/detalleventa/detalleventa.co
 import { CxcobrarComponent } from './components/cxcobrar/cxcobrar.component';
 import { CxpagarComponent } from './components/cxpagar/cxpagar.component';
 import { PagosComponent } from './components/pagos/pagos.component';
+import { EmpresaEditComponent } from './components/empresa-edit/empresa-edit.component';
 const routes: Routes = [
+    {
+    path: 'empresa/edit/:id',
+    component :EmpresaEditComponent
+  }
 
+
+  ,
+  {
+    path: 'navegacion',
+    component:NavegacionComponent
+  }
+
+  ,
   {
     path: 'empresa',
     component :EmpresaComponent

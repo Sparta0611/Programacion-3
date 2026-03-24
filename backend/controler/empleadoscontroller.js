@@ -50,10 +50,17 @@ controller.update = (req, res) => {
 controller.delete = (req, res) => {
     const { idemp } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from empleados where idemp =?', [idemp], (err, rows) => {
-            res.json({ message: "Registro Eliminado" });
+        // Cambiamos 'delete' por 'update' para que el registro permanezca
+        const query = 'UPDATE empleados SET estado = "Inactivo" WHERE idemp = ?';
+        
+        conn.query(query, [idemp], (err, rows) => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            res.json({ message: "Registro marcado como Inactivo correctamente" });
         });
-    })
+    });
 };
+
 
 module.exports = controller;

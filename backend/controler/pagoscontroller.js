@@ -48,12 +48,19 @@ controller.update = (req, res) => {
 };
 
 controller.delete = (req, res) => {
-    const {idpago} = req.params;
+    const { idpago } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from pagos where idpago =?', [idpago], (err, rows) => {
-            res.json({ message: "Registro Eliminado" });
+        // Cambiamos 'delete' por 'update' para que el registro permanezca
+        const query = 'UPDATE pagos SET estado = "Inactivo" WHERE idpago = ?';
+        
+        conn.query(query, [idpago], (err, rows) => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            res.json({ message: "Registro marcado como Inactivo correctamente" });
         });
-    })
+    });
 };
+
 
 module.exports = controller;

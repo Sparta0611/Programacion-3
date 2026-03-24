@@ -15,7 +15,7 @@ export interface sucursales{
     sucursal?: string | null;
     dirsuc?: string | null;
     telefono?: string | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface proveedor{
     idprov?: number | null;
@@ -26,7 +26,7 @@ export interface proveedor{
     responsable?: string | null;
     fecha_creacion?: Date | null;
     observaciones?: string | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface areas_trabajo{
     idarea?: number | null;
@@ -34,7 +34,7 @@ export interface areas_trabajo{
     idsuc?: number | null;
     area?: string | null;
     fecha_creacion?: Date | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface empleados{
     idemp?: number | null;
@@ -52,13 +52,13 @@ export interface empleados{
     unionlibre?: boolean | null;
     direccion?: string | null;
     fecha_creacion?: Date | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface tipousuario{
     idtpusuario?: number | null;
     idempresa?: number | null;
     tipo?: string | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface usuario{
     userid?: number | null;
@@ -69,7 +69,7 @@ export interface usuario{
     usuario?: string | null;
     clave?: string | null;
     tipo?: string | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface clientes{
     num_clie?: number | null;
@@ -83,13 +83,13 @@ export interface clientes{
     direccion?: string | null;
     correo?: string | null;
     fecha_creacion?: Date | null;
-    estado?: string | null;
+    estado?: string 
 } 
 export interface tipoproducto{
     idtpprod?: number | null;
     idempresa?: number | null;
     tipo?: string | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface producto{
     num_prod?: number | null;
@@ -104,13 +104,13 @@ export interface producto{
     existencia?: number | null;
     fecha_ingreso?: Date | null;
     fecha_actualiza?: Date | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface formapago{
     idfpago?: number | null;
     idempresa?: number | null;
     formapago?: string | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface encabezadoCompra{
     num_compra?: number | null;
@@ -120,7 +120,7 @@ export interface encabezadoCompra{
     userid?: number | null;
     idfpago?: number | null;
     fecha_compra?: Date | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface detalleCompra{
     iddetcomp?: number | null;
@@ -133,7 +133,7 @@ export interface detalleCompra{
     subtotal?: number | null;
     isv?: number | null;
     total?: number | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface encabezadoVenta{
     num_venta?: number | null;
@@ -143,7 +143,7 @@ export interface encabezadoVenta{
     userid?: number | null;
     idfpago?: number | null;
     fecha_venta?: Date | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface detalleVenta{
     iddetventa?: number | null;
@@ -157,7 +157,7 @@ export interface detalleVenta{
     isv?: number | null;
     descuento?: number | null;
     total?: number | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface cxcobrar{
     idcxc?: number | null;
@@ -175,7 +175,7 @@ export interface cxcobrar{
     descuento?: number | null;
     total?: number | null;
     fecha_pago?: Date | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface cxpagar{
     idcxp?: number | null;
@@ -193,7 +193,7 @@ export interface cxpagar{
     isv?: number | null;
     total?: number | null;
     fecha_pago?: Date | null;
-    estado?: string | null;
+    estado?: string 
 }
 export interface pagos{
     idpago?: number | null;
@@ -210,5 +210,10 @@ export interface pagos{
     isv?: number | null;
     descuento?: number | null;
     total?: number | null;
-    estado?: string | null;
+    estado?: string 
+}
+export interface User{
+    ctipou?: number;
+    descripcion?: string;
+    estado?: string;
 }

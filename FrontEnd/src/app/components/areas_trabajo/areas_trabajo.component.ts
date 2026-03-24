@@ -31,6 +31,23 @@ export class AreasTrabajoComponent implements OnInit {
         
         }, err => console.error(err));
   }
-  
+  AgregarValor() {
+    delete this.user.idarea;
+    this.Data.save(this.user, '/areas_trabajo').subscribe(
+      (res) => {
+        this.getUser();
+      },
+      (err) => console.error(err),
+    );
+  }
+  EliminarData(id: number) {
+    this.Data.delete(id, '/areas_trabajo')
+    .subscribe(
+      res => {
+        this.getUser();
+      },
+      err => console.error(err),
+    );
+  }
 } 
 

@@ -50,10 +50,17 @@ controller.update = (req, res) => {
 controller.delete = (req, res) => {
     const { idtpusuario } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from tipousuario where idtpusuario =?', [idtpusuario], (err, rows) => {
-            res.json({ message: "Registro Eliminado" });
+        // Cambiamos 'delete' por 'update' para que el registro permanezca
+        const query = 'UPDATE tipousuario SET estado = "Inactivo" WHERE idtpusuario = ?';
+        
+        conn.query(query, [idtpusuario], (err, rows) => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            res.json({ message: "Registro marcado como Inactivo correctamente" });
         });
-    })
+    });
 };
+
 
 module.exports = controller;

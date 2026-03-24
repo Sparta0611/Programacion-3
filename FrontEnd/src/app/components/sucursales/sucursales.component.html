@@ -2,7 +2,59 @@
     <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
 
 </nav>
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Registrar Sucursal</h4>
+        </div>
+        <div class="card-body">
+            <form id="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
 
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>ID Sucursal (Auto)</label>
+                        <input type="text" class="form-control" placeholder="Automático" disabled>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>ID Empresa*</label>
+                        <input type="number" [(ngModel)]="user.idempresa" name="idempresa" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Estado</label>
+                        <select [(ngModel)]="user.estado" name="estado" class="form-control">
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-6">
+                        <label>Nombre de Sucursal*</label>
+                        <input type="text" [(ngModel)]="user.sucursal" name="sucursal" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Teléfono*</label>
+                        <input type="text" [(ngModel)]="user.telefono" name="telefono" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-12">
+                        <label>Dirección de Sucursal*</label>
+                        <input type="text" [(ngModel)]="user.dirsuc" name="dirsuc" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="f.invalid">
+                         Guardar Sucursal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row mt-25">
         <table class="table table-borbered table-hover">
@@ -28,9 +80,11 @@
                     <td>{{User.telefono}}</td>
                     <td>{{User.estado}}</td>
                     
-                    <td> <button class="btn btn-danger">Eliminar</button> </td>
+                    <td> <button class="btn btn-danger" (click)="EliminarData(User.idsuc)"onclick="javascript:alert('Registro Eliminado')">Eliminar</button> </td>
                     <td>
-                        <button class="btn btn-success">Actualizar</button>
+                        <button class="btn btn-success" [routerLink]="['/sucursales/edit', User.idsuc]">
+                            Actualizar
+                        </button>
                     </td>
                 </tr>
 

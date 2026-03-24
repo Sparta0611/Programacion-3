@@ -50,10 +50,17 @@ controller.update = (req, res) => {
 controller.delete = (req, res) => {
     const { idprov } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from proveedor where idprov =?', [idprov], (err, rows) => {
-            res.json({ message: "Registro Eliminado" });
+        // Cambiamos 'delete' por 'update' para que el registro permanezca
+        const query = 'UPDATE proveedor SET estado = "Inactivo" WHERE idprov = ?';
+        
+        conn.query(query, [idprov], (err, rows) => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            res.json({ message: "Registro marcado como Inactivo correctamente" });
         });
-    })
+    });
 };
+
 
 module.exports = controller;

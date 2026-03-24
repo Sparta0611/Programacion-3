@@ -50,10 +50,17 @@ controller.update = (req, res) => {
 controller.delete = (req, res) => {
     const { num_clie } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from clientes where num_clie =?', [num_clie], (err, rows) => {
-            res.json({ message: "Registro Eliminado" });
+        // Cambiamos 'delete' por 'update' para que el registro permanezca
+        const query = 'UPDATE clientes SET estado = "Inactivo" WHERE num_clie = ?';
+        
+        conn.query(query, [num_clie], (err, rows) => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            res.json({ message: "Registro marcado como Inactivo correctamente" });
         });
-    })
+    });
 };
+
 
 module.exports = controller;

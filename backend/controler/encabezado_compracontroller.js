@@ -50,10 +50,16 @@ controller.update = (req, res) => {
 controller.delete = (req, res) => {
     const { num_compra } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from encabezado_compra where num_compra =?', [num_compra], (err, rows) => {
-            res.json({ message: "Registro Eliminado" });
+        // Cambiamos 'delete' por 'update' para que el registro permanezca
+        const query = 'UPDATE encabezado_compra SET estado = "Inactivo" WHERE num_compra = ?';
+        
+        conn.query(query, [num_compra], (err, rows) => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            res.json({ message: "Registro marcado como Inactivo correctamente" });
         });
-    })
+    });
 };
 
 module.exports = controller;

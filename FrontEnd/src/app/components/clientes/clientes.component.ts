@@ -35,4 +35,22 @@ export class ClientesComponent implements OnInit {
         
         }, err => console.error(err));
   }
+  AgregarValor() {
+    delete this.user.num_clie;
+    this.Data.save(this.user, '/clientes').subscribe(
+      (res) => {
+        this.getUser();
+      },
+      (err) => console.error(err),
+    );
+  }
+  EliminarData(id: number) {
+    this.Data.delete(id, '/clientes')
+    .subscribe(
+      res => {
+        this.getUser();
+      },
+      err => console.error(err),
+    );
+  }
 }

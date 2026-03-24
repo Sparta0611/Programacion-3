@@ -1,7 +1,113 @@
 <nav class="navbar navbar-dark bg-dark">
     <a routerLink="/" class="navbar-brand">REGISTRO DE CUENTAS POR PAGAR</a>
 </nav>
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">Registrar Nueva Cuenta por Pagar</h4>
+        </div>
+        <div class="card-body">
+            <form id="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
 
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>Número de Compra*</label>
+                        <input type="number" [(ngModel)]="user.num_compra" name="num_compra" class="form-control" required placeholder="Ej: 8001">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>ID Empresa*</label>
+                        <input type="number" [(ngModel)]="user.idempresa" name="idempresa" class="form-control" required>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>ID Sucursal*</label>
+                        <input type="number" [(ngModel)]="user.idsuc" name="idsuc" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-4">
+                        <label>ID Proveedor*</label>
+                        <input type="number" [(ngModel)]="user.idprov" name="idprov" class="form-control" required placeholder="ID del Proveedor">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>User ID (Comprador)*</label>
+                        <input type="number" [(ngModel)]="user.userid" name="userid" class="form-control" required>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>ID Forma Pago*</label>
+                        <input type="number" [(ngModel)]="user.idfpago" name="idfpago" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-4">
+                        <label>Num Producto*</label>
+                        <input type="number" [(ngModel)]="user.num_prod" name="num_prod" class="form-control" required>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Cantidad*</label>
+                        <input type="number" [(ngModel)]="user.cantidad" name="cantidad" class="form-control" required>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Precio Unitario*</label>
+                        <input type="number" [(ngModel)]="user.precio" name="precio" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-3">
+                        <label>Subtotal*</label>
+                        <input type="number" [(ngModel)]="user.subtotal" name="subtotal" class="form-control" required>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>ISV</label>
+                        <input type="number" [(ngModel)]="user.isv" name="isv" class="form-control">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Total a Pagar*</label>
+                        <input type="number" [(ngModel)]="user.total" name="total" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-4">
+                        <label>Fecha Compra*</label>
+                        <input type="date" [(ngModel)]="user.fecha_compra" name="fecha_compra" class="form-control" required>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Fecha Límite Pago</label>
+                        <input type="date" [(ngModel)]="user.fecha_pago" name="fecha_pago" class="form-control">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Estado</label>
+                        <select [(ngModel)]="user.estado" name="estado" class="form-control">
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Pagado">Pagado</option>
+                            <option value="Vencido">Vencido</option>
+                            <option value="Anulado">Anulado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn btn-dark btn-lg" [disabled]="f.invalid">
+                         Guardar Cuenta por Pagar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="container-fluid">
     <div class="row mt-4">
         <div class="table-responsive">
@@ -45,12 +151,12 @@
                         <td><strong>{{ User.total | number:'1.2-2' }}</strong></td>
                         <td>{{ User.fecha_pago | date:'dd/MM/yyyy' }}</td>
                         <td>{{ User.estado }}</td>
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-sm btn-danger">Eliminar</button>
-                                <button class="btn btn-sm btn-success">Actualizar</button>
-                            </div>
-                        </td>
+                        <td> <button class="btn btn-danger" (click)="EliminarData(User.idcxp)"onclick="javascript:alert('Registro Eliminado')">Eliminar</button> </td>
+                    <td>
+                        <button class="btn btn-success" [routerLink]="['/cxpagar/edit', User.idcxp]">
+                            Actualizar
+                        </button>
+                    </td>
                     </tr>
                 </tbody>
             </table>

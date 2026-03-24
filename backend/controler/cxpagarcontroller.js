@@ -48,12 +48,19 @@ controller.update = (req, res) => {
 };
 
 controller.delete = (req, res) => {
-    const {idcxp} = req.params;
+    const { idcxp } = req.params;
     req.getConnection((err, conn) => {
-        conn.query('delete from cxpagar where idcxp =?', [idcxp], (err, rows) => {
-            res.json({ message: "Registro Eliminado" });
+        // Cambiamos 'delete' por 'update' para que el registro permanezca
+        const query = 'UPDATE cxpagar SET estado = "Inactivo" WHERE idcxp = ?';
+        
+        conn.query(query, [idcxp], (err, rows) => {
+            if (err) {
+                return res.status(500).json(err);
+            }
+            res.json({ message: "Registro marcado como Inactivo correctamente" });
         });
-    })
+    });
 };
+
 
 module.exports = controller;

@@ -2,7 +2,96 @@
     <a href="/" class="navbar-brand">REGISTRO DE EMPRESAS</a>
 
 </nav>
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Registrar Producto</h4>
+        </div>
+        <div class="card-body">
+            <form id="formulario" #f="ngForm" (ngSubmit)="AgregarValor()" novalidate>
 
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label>Num Producto (Auto)</label>
+                        <input type="text" class="form-control" placeholder="Automático" disabled>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>ID Empresa*</label>
+                        <input type="number" [(ngModel)]="user.idempresa" name="idempresa" class="form-control"
+                            required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>ID Sucursal*</label>
+                        <input type="number" [(ngModel)]="user.idsuc" name="idsuc" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>ID Tipo Producto*</label>
+                        <input type="number" [(ngModel)]="user.idtpprod" name="idtpprod" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-6">
+                        <label>Descripción*</label>
+                        <input type="text" [(ngModel)]="user.descripcion" name="descripcion" class="form-control"
+                            required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Presentación</label>
+                        <input type="text" [(ngModel)]="user.presentacion" name="presentacion" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Marca</label>
+                        <input type="text" [(ngModel)]="user.marca" name="marca" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-3">
+                        <label>Costo (Valor)*</label>
+                        <input type="number" [(ngModel)]="user.valor" name="valor" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Precio Venta*</label>
+                        <input type="number" [(ngModel)]="user.precioventa" name="precioventa" class="form-control"
+                            required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Existencia*</label>
+                        <input type="number" [(ngModel)]="user.existencia" name="existencia" class="form-control"
+                            required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Estado</label>
+                        <select [(ngModel)]="user.estado" name="estado" class="form-control">
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group col-md-6">
+                        <label>Fecha Ingreso*</label>
+                        <input type="date" [(ngModel)]="user.fecha_ingreso" name="fecha_ingreso" class="form-control"
+                            required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Fecha Actualización</label>
+                        <input type="date" [(ngModel)]="user.fecha_actualiza" name="fecha_actualiza"
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="f.invalid">
+                        Guardar Producto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row mt-25">
         <table class="table table-borbered table-hover">
@@ -36,9 +125,12 @@
                     <td>{{User.fecha_ingreso| date:'dd/MM/yyyy'}}</td>
                     <td>{{ User.fecha_actualiza| date:'dd/MM/yyyy' }}</td>
                     <td>{{ User.estado }}</td>
-                    <td> <button class="btn btn-danger">Eliminar</button> </td>
+                    <td> <button class="btn btn-danger" (click)="EliminarData(User.num_prod)"
+                            onclick="javascript:alert('Registro Eliminado')">Eliminar</button> </td>
                     <td>
-                        <button class="btn btn-success">Actualizar</button>
+                        <button class="btn btn-success" [routerLink]="['/producto/edit', User.num_prod]">
+                            Actualizar
+                        </button>
                     </td>
                 </tr>
 
